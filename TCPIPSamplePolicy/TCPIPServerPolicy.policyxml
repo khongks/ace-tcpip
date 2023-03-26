@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <policies>
   <policy policyType="TCPIPServer" policyName="TCPIPServerPolicy" policyTemplate="TCPIPServer">
-    <Port>8888</Port>
+    <Port>9999</Port>
     <SSLProtocol></SSLProtocol>
     <SSLCiphers></SSLCiphers>
     <SSLClientAuth></SSLClientAuth>
