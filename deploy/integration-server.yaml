@@ -1,0 +1,50 @@
+apiVersion: appconnect.ibm.com/v1beta1
+kind: Configuration
+metadata:
+  name: github-barauth
+  namespace: ace
+spec:
+  description: Stores bar auth
+  data: eyJhdXRoVHlwZSI6IkJBU0lDX0FVVEgiLCJjcmVkZW50aWFscyI6eyJ1c2VybmFtZSI6IiIsInBhc3N3b3JkIjoiIn19Cg==
+  type: barauth
+---
+apiVersion: appconnect.ibm.com/v1beta1
+kind: IntegrationServer
+metadata:
+  name: tcpip-sample
+  namespace: ace
+spec:
+  adminServerSecure: true
+  createDashboardUsers: true
+  designerFlowsOperationMode: disabled
+  enableMetrics: true
+  license:
+    accept: true
+    license: L-APEH-CJUCNR
+    use: CloudPakForIntegrationProduction
+  pod:
+    containers:
+      runtime:
+        resources:
+          limits:
+            cpu: 300m
+            memory: 368Mi
+          requests:
+            cpu: 300m
+            memory: 368Mi
+  replicas: 1
+  router:
+    timeout: 120s
+  service:
+    ports:
+      - name: tcpip-sample-port
+        nodePort: 30999
+        port: 9999
+        protocol: TCP
+        targetPort: 999
+    type: NodePort
+    endpointType: http
+  version: '12.0'
+  barURL: >-
+    https://github.com/khongks/ace-tcpip/raw/main/TCPIPSample/TCPIPSample.bar
+  configurations: [ github-barauth ]
