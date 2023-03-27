@@ -8,12 +8,11 @@ parser.add_argument("-p", "--port", help="Port of the TCPIP server")
 parser.add_argument("-f", "--file", help="provide a file that contains a XML message")
 args = parser.parse_args()
 config = vars(args)
-# print(config)
-
+print(config)
 
 # Define the server IP address and port number
-SERVER_IP = config.server
-SERVER_PORT = config.port
+SERVER_IP = config['server']
+SERVER_PORT = int(config['port'])
 
 # Create a TCP socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -22,7 +21,7 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 sock.connect((SERVER_IP, SERVER_PORT))
 
 # Read the file content
-with open(config.file, 'r') as file:
+with open(config['file'], 'r') as file:
     message = file.read()
 file.close();
 

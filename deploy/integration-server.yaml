@@ -41,7 +41,7 @@ spec:
         nodePort: 30999
         port: 9999
         protocol: TCP
-        targetPort: 999
+        targetPort: 9999
     type: NodePort
     endpointType: http
   version: '12.0'
